@@ -1,0 +1,7 @@
+fecha = $(date +%Y%m%d)
+echo Respaldo iniciado: $(date)
+mysqldump forksoftware -u SATPadmin -p'S0p0rt3-DS16C' > /home/SATPadmin/bkp/My$fecha.sql
+echo Respaldo finalizado: $(date)
+
+crontab -e
+* * * * * /home/SATPadmin/bin/MySQLbkp >>/home/SATPadmin/bin/MySQLbkp.std 2>>/home/SATPadmin/bin/MySQLbkp.err
